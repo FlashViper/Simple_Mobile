@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Player/CameraRig.gd" type="Script" id=1]
+
+[node name="CameraRig" type="Camera2D"]
+position = Vector2( 4, 55 )
+current = true
+smoothing_enabled = true
+script = ExtResource( 1 )

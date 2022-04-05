@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=2]
+
+[sub_resource type="Curve" id=1]
+_data = [ Vector2( 0, 1 ), 0.0, -1.0, 0, 1, Vector2( 1, 0 ), -4.04766, 0.0, 0, 0 ]
+
+[sub_resource type="Gradient" id=2]
+offsets = PoolRealArray( 0, 0.491713, 0.839779 )
+colors = PoolColorArray( 0.98, 1, 0.4, 1, 1, 0.39, 0.39, 1, 1, 0.388235, 0.388235, 0 )
+
+[node name="ThrusterParticles" type="CPUParticles2D"]
+show_behind_parent = true
+position = Vector2( -21, 19 )
+amount = 30
+lifetime = 0.4
+local_coords = false
+direction = Vector2( 0, 1 )
+initial_velocity = 30.0
+angular_velocity = 317.06
+angular_velocity_random = 1.0
+scale_amount = 5.0
+scale_amount_random = 0.37
+scale_amount_curve = SubResource( 1 )
+color_ramp = SubResource( 2 )

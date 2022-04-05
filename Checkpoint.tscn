@@ -1,0 +1,143 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Checkpoint.gd" type="Script" id=1]
+[ext_resource path="res://Sprites/player_main.png" type="Texture" id=2]
+[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Sprites/light_checkpoint.png" type="Texture" id=4]
+
+[sub_resource type="AtlasTexture" id=58]
+atlas = ExtResource( 2 )
+region = Rect2( 2, 246, 54, 9 )
+
+[sub_resource type="AtlasTexture" id=59]
+atlas = ExtResource( 2 )
+region = Rect2( 6, 232, 22, 12 )
+
+[sub_resource type="Animation" id=62]
+resource_name = "Close"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Side_Left:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -23, -5 ), Vector2( -11, -5 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Side_Right:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 23, -5 ), Vector2( 11, -5 ) ]
+}
+
+[sub_resource type="Animation" id=60]
+resource_name = "Open"
+length = 0.25
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("Side_Left:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.25 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -11, -5 ), Vector2( -23, -5 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Side_Right:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.25 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 11, -5 ), Vector2( 23, -5 ) ]
+}
+
+[sub_resource type="Animation" id=61]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Side_Left:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -11, -5 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Side_Right:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 11, -5 ) ]
+}
+
+[sub_resource type="RectangleShape2D" id=57]
+extents = Vector2( 122.5, 50.5 )
+
+[node name="Checkpoint" type="Area2D"]
+position = Vector2( 496, 93 )
+script = ExtResource( 1 )
+nextScene = ExtResource( 3 )
+
+[node name="Visual" type="Node2D" parent="."]
+
+[node name="Base" type="Sprite" parent="Visual"]
+texture = SubResource( 58 )
+
+[node name="Side_Left" type="Sprite" parent="Visual"]
+position = Vector2( -11, -5 )
+z_index = 1
+texture = SubResource( 59 )
+
+[node name="Side_Right" type="Sprite" parent="Visual"]
+position = Vector2( 11, -5 )
+z_index = 1
+texture = SubResource( 59 )
+flip_h = true
+
+[node name="Light2D" type="Light2D" parent="Visual"]
+texture = ExtResource( 4 )
+texture_scale = 4.0
+range_z_min = -10
+range_z_max = 10
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Visual"]
+anims/Close = SubResource( 62 )
+anims/Open = SubResource( 60 )
+anims/RESET = SubResource( 61 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -3.5, -31.5 )
+shape = SubResource( 57 )
+
+[node name="TargetPos" type="Position2D" parent="."]
+position = Vector2( 0, 2 )
+
+[node name="PuppetPos" type="Position2D" parent="."]
+position = Vector2( 0, -11 )

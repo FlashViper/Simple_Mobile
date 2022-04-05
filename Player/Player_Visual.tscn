@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Sprites/player_main.png" type="Texture" id=1]
+[ext_resource path="res://Player/ThrusterParticles.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Player/Player_Visual.gd" type="Script" id=3]
+
+[node name="Visual" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0, -9 )
+texture = ExtResource( 1 )
+hframes = 4
+vframes = 4
+
+[node name="ThrusterParticlesL" parent="." instance=ExtResource( 2 )]
+emitting = false
+
+[node name="ThrusterParticlesR" parent="." instance=ExtResource( 2 )]
+position = Vector2( 21, 19 )
+emitting = false
+
+[node name="Tween" type="Tween" parent="."]
