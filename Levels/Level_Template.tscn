@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://tileset_default.tres" type="TileSet" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Player/CameraRig.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Levels/LevelBounds.gd" type="Script" id=4]
 [ext_resource path="res://Checkpoint.tscn" type="PackedScene" id=5]
+[ext_resource path="res://GUI/GUI_Main.tscn" type="PackedScene" id=6]
 
 [sub_resource type="CanvasItemMaterial" id=1]
 blend_mode = 3
@@ -14,35 +15,43 @@ blend_mode = 3
 [node name="Background" type="TileMap" parent="."]
 self_modulate = Color( 1, 1, 1, 0 )
 material = SubResource( 1 )
-position = Vector2( 77, 191 )
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 32, 32 )
 collision_layer = 0
 collision_mask = 0
 format = 1
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="TileMap" type="TileMap" parent="."]
-position = Vector2( 59, 52 )
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 32, 32 )
 collision_layer = 3
 collision_mask = 3
 format = 1
-tile_data = PoolIntArray( 65531, 1, 0, 65532, 1, 1, 65533, 1, 1, 65534, 1, 1, 65535, 1, 1, 0, 1, 1, 1, 1, 1, 2, 1, 1, 3, 1, 2, 131067, 1, 131072, 131068, 1, 131073, 131069, 1, 131073, 131070, 1, 131073, 131071, 1, 131073, 65536, 1, 131073, 65537, 1, 131073, 65538, 1, 131073, 65539, 1, 131074 )
+tile_data = PoolIntArray( 196603, 1, 0, 196604, 1, 1, 196605, 1, 1, 196606, 1, 1, 196607, 1, 1, 131072, 1, 1, 131073, 1, 1, 131074, 1, 1, 131075, 1, 1, 131076, 1, 2, 262139, 1, 131072, 262140, 1, 131073, 262141, 1, 131073, 262142, 1, 131073, 262143, 1, 131073, 196608, 1, 131073, 196609, 1, 131073, 196610, 1, 131073, 196611, 1, 131073, 196612, 1, 131074 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 33, 23 )
+position = Vector2( 0, 41 )
 
 [node name="CameraRig" parent="Player" instance=ExtResource( 3 )]
-position = Vector2( 8, -124 )
+position = Vector2( 1, -110 )
 
 [node name="LevelBounds" type="ReferenceRect" parent="."]
 margin_left = -311.0
 margin_top = -557.0
 margin_right = 406.0
 margin_bottom = 214.0
+mouse_filter = 2
 border_width = 3.1
 script = ExtResource( 4 )
 
 [node name="Checkpoint" parent="." instance=ExtResource( 5 )]
 position = Vector2( 135, 46 )
+nextScene = null
+
+[node name="GUI" parent="." instance=ExtResource( 6 )]

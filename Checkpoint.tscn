@@ -140,4 +140,10 @@ shape = SubResource( 57 )
 position = Vector2( 0, 2 )
 
 [node name="PuppetPos" type="Position2D" parent="."]
-position = Vector2( 0, -11 )
+position = Vector2( 0, -30 )
+
+[node name="Sprite" type="Sprite" parent="PuppetPos"]
+visible = false
+texture = ExtResource( 2 )
+hframes = 4
+vframes = 4

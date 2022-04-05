@@ -24,7 +24,7 @@ func _process(delta: float) -> void:
 		flags += int(player.linear_velocity.length_squared() > 10)
 		flags += int(player.angular_velocity > 1)
 		if flags == 0:
-			Globals.playerAnim.interpolatePosition($PuppetPos.global_position, 0.25)
+			Globals.playerAnim.interpolatePosition($PuppetPos.global_position, 0.45)
 			yield(get_tree().create_timer(0.5), "timeout")
 			if nextScene:
 				get_tree().change_scene_to(nextScene)
