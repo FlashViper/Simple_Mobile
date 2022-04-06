@@ -34,6 +34,7 @@ window/size/width=225
 window/size/height=400
 window/size/test_width=495
 window/size/test_height=880
+window/handheld/orientation="portrait"
 window/stretch/mode="viewport"
 window/stretch/aspect="keep"
 
