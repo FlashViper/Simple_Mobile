@@ -1,8 +1,7 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Checkpoint.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/player_main.png" type="Texture" id=2]
-[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Sprites/light_checkpoint.png" type="Texture" id=4]
 
 [sub_resource type="AtlasTexture" id=58]
@@ -103,7 +102,6 @@ extents = Vector2( 122.5, 50.5 )
 [node name="Checkpoint" type="Area2D"]
 position = Vector2( 496, 93 )
 script = ExtResource( 1 )
-nextScene = ExtResource( 3 )
 
 [node name="Visual" type="Node2D" parent="."]
 
@@ -140,10 +138,11 @@ shape = SubResource( 57 )
 position = Vector2( 0, 2 )
 
 [node name="PuppetPos" type="Position2D" parent="."]
-position = Vector2( 0, -30 )
+position = Vector2( 0, -21 )
 
 [node name="Sprite" type="Sprite" parent="PuppetPos"]
 visible = false
+position = Vector2( 0, -9 )
 texture = ExtResource( 2 )
 hframes = 4
 vframes = 4

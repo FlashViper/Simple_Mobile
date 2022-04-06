@@ -15,7 +15,7 @@ var invertDirections := false
 
 var stuck : bool
 
-func _ready() -> void:
+func _enter_tree() -> void:
 	Globals.player = self
 
 func _process(delta: float) -> void:
@@ -23,6 +23,12 @@ func _process(delta: float) -> void:
 
 #todo: analize for frame-dependance
 func _physics_process(delta: float) -> void:
+	if Globals.state == Globals.STATE_TRANSITION:
+		mode = MODE_STATIC
+		return
+	else:
+		mode = MODE_RIGID
+	
 	pollInput()
 #	applied_force = Vector2.ZERO
 	apply_impulse((rDir).rotated(rotation)* inputR, -transform.y * thrusterForce * inputR * delta)

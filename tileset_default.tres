@@ -523,7 +523,7 @@ points = PoolVector2Array( 32, 11.2995, 0, 11.2995, 0, 0, 32, 0 )
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 1/z_index = 0
-2/name = "tiles_default.png 2"
+2/name = "tile_one_way"
 2/texture = ExtResource( 2 )
 2/tex_offset = Vector2( 0, 0 )
 2/modulate = Color( 1, 1, 1, 1 )

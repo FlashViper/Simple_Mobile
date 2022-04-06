@@ -1,4 +1,4 @@
 extends Camera2D
 
-func _ready():
+func _enter_tree() -> void:
 	Globals.camera = self
