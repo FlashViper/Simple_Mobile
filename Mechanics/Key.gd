@@ -15,7 +15,7 @@ func _ready():
 		doors.append(_d.get_node("TriggerZone"))
 
 func onEnter(body: PhysicsBody2D) -> void:
-	if following or collected or !body.is_in_group("player"): return
+	if !body or following or collected or !body.is_in_group("player"): return
 	following = true
 
 func _process(delta: float) -> void:
