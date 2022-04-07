@@ -15,6 +15,6 @@ func _process(delta: float) -> void:
 	if following:
 		pos = Globals.player.position
 		pos += (position - pos).normalized() * 40
-		if Globals.player.get_colliding_bodies().size() > 0:
+		if Globals.player.onGround:
 			following = false
 	position = lerp(position, pos , 0.1)

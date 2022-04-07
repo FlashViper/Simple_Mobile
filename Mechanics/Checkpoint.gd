@@ -22,12 +22,12 @@ func _process(delta: float) -> void:
 	if opened and !triggered:
 		var player := Globals.player # for readability
 		var flags : int
-		flags += int(abs(player.position.x - $TargetPos.global_position.x) > xRange)
+		flags += int(abs(player.global_position.x - $TargetPos.global_position.x) > xRange)
 		flags += int(player.transform.y.dot(transform.y) < 0.8) * 2
 		flags += int(player.linear_velocity.length_squared() > 10) * 4
 		flags += int(player.angular_velocity > 1) * 16
-		flags += int(player.get_colliding_bodies().size() < 1)
-		print(abs(player.position.x - $TargetPos.global_position.x) > xRange)
+		flags += int(!player.onGround)
+#		print(abs(player.position.x - $TargetPos.global_position.x) > xRange)
 		if flags == 0:
 			triggered = true
 			anim.play("Close")

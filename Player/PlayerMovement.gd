@@ -5,14 +5,19 @@ signal stuck(isStuck)
 export var thrusterForce := 10
 export var thrusterOffsetX := 13
 export var maxSpeedY := 50
+export var torqueCorrection := 1200.0
+export (float, 0, 90) var torqueCorrectionThreshold := 5
+export var fallingGramvity := 0.8
 
 onready var rDir := Vector2(-thrusterOffsetX , 0)#20)
 onready var lDir := Vector2(thrusterOffsetX, 0)#20)
+onready var originalGravity := gravity_scale
 
 var inputR : float
 var inputL : float
 var invertDirections := false
 
+var onGround : bool
 var stuck : bool
 
 func _enter_tree() -> void:
@@ -33,15 +38,24 @@ func _physics_process(delta: float) -> void:
 		mode = MODE_RIGID
 	
 	pollInput()
+	onGround = get_colliding_bodies().size() > 0
 #	applied_force = Vector2.ZERO
 	apply_impulse((rDir).rotated(rotation)* inputL, -transform.y * thrusterForce * inputL * delta)
 	apply_impulse((lDir).rotated(rotation)* inputR, -transform.y * thrusterForce * inputR * delta)
+	
+	if SettingsManager.settings["torque-correction"]:
+		if inputL + inputR < 0.1:
+			if abs((transform.x).angle()) > deg2rad(torqueCorrectionThreshold):
+				apply_torque_impulse(torqueCorrection * delta * -sign(transform.x.angle()))
+	
+	if SettingsManager.settings["lower-falling-gravity"]:
+		gravity_scale = originalGravity if linear_velocity.y < 0 else fallingGramvity
 	
 	if (
 		linear_velocity.y > -8 
 		and linear_velocity.y < 0.5 
 		and abs(fmod(rotation_degrees, 360)) > 45
-		and get_colliding_bodies().size() > 0
+		and onGround
 	):
 		if !stuck: emit_signal("stuck", true)
 		stuck = true

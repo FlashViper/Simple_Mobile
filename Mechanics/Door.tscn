@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://icon.png" type="Texture" id=1]
 [ext_resource path="res://Mechanics/Door.gd" type="Script" id=2]
@@ -62,6 +62,9 @@ tracks/1/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 0, 50 ) ]
 }
 
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 60.5, 104.5 )
+
 [node name="Door" type="Node2D"]
 script = ExtResource( 2 )
 
@@ -92,3 +95,9 @@ shape = SubResource( 1 )
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 3 )
 anims/open = SubResource( 2 )
+
+[node name="ZoneTrigger" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ZoneTrigger"]
+position = Vector2( 0.5, -45.5 )
+shape = SubResource( 4 )

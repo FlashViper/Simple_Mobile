@@ -18,5 +18,4 @@ tile_data = PoolIntArray( -917512, 1, 0, -917511, 1, 1, -917510, 1, 1, -917509, 
 position = Vector2( -103, -218 )
 
 [node name="Checkpoint" parent="." index="4"]
-position = Vector2( 694, -260 )
-xRange = 10.0
+position = Vector2( 691, -260 )

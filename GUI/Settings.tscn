@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://GUI/Menu_Background.tscn" type="PackedScene" id=1]
 [ext_resource path="res://GUI/BackButton.tscn" type="PackedScene" id=2]
 [ext_resource path="res://GUI/SettingsToggle.gd" type="Script" id=3]
+[ext_resource path="res://GUI/Fonts/font_label.tres" type="DynamicFont" id=4]
 
 [node name="Settings" type="Control"]
 anchor_right = 1.0
@@ -10,6 +11,9 @@ anchor_bottom = 1.0
 
 [node name="Menu_Background" parent="." instance=ExtResource( 1 )]
 position = Vector2( 7, -8 )
+
+[node name="PlayerMain" parent="Menu_Background" index="1"]
+visible = false
 
 [node name="BackButton" parent="." instance=ExtResource( 2 )]
 
@@ -21,3 +25,31 @@ margin_bottom = 46.0
 text = "Invert Controls"
 script = ExtResource( 3 )
 settingName = "invert-controls"
+
+[node name="Label" type="Label" parent="."]
+margin_left = 20.0
+margin_top = 70.0
+margin_right = 201.0
+margin_bottom = 108.0
+custom_fonts/font = ExtResource( 4 )
+text = "Experimental"
+
+[node name="torque" type="CheckButton" parent="."]
+margin_left = 19.0
+margin_top = 106.0
+margin_right = 210.0
+margin_bottom = 146.0
+text = "torque correction"
+script = ExtResource( 3 )
+settingName = "invert-controls"
+
+[node name="torque2" type="CheckButton" parent="."]
+margin_left = 9.0
+margin_top = 146.0
+margin_right = 225.0
+margin_bottom = 186.0
+text = "lower falling gramvity"
+script = ExtResource( 3 )
+settingName = "lower-falling-gravity"
+
+[editable path="Menu_Background"]

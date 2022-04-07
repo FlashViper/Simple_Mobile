@@ -3,7 +3,9 @@ extends Node
 #const filepath
 
 var settings := {
-	"invert-controls": true
+	"invert-controls": true,
+	"torque-correction": true,
+	"lower-falling-gravity": true
 }
 
 #func _enter_tree() -> void:
