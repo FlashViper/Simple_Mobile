@@ -41,7 +41,7 @@ margin_right = 210.0
 margin_bottom = 146.0
 text = "torque correction"
 script = ExtResource( 3 )
-settingName = "invert-controls"
+settingName = "torque-correction"
 
 [node name="torque2" type="CheckButton" parent="."]
 margin_left = 9.0
