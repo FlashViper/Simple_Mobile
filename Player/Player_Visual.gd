@@ -12,8 +12,8 @@ func _ready() -> void:
 func animate(data: Dictionary) -> void:
 	if taken:
 		return
-	(rThruster if data.invertDirections else lThruster).emitting = data.inputR > 0
-	(lThruster if data.invertDirections else rThruster).emitting = data.inputL > 0
+	rThruster.emitting = data.inputL > 0 if !data.invertDirections else data.inputR > 0
+	lThruster.emitting = data.inputR > 0 if !data.invertDirections else data.inputL > 0
 
 # todo: different modes (cubic easing, bouncy easing
 func interpolatePosition(globalPos: Vector2, time: float) -> void:

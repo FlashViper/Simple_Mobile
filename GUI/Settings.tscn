@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://GUI/Menu_Background.tscn" type="PackedScene" id=1]
+[ext_resource path="res://GUI/BackButton.tscn" type="PackedScene" id=2]
+[ext_resource path="res://GUI/SettingsToggle.gd" type="Script" id=3]
+
+[node name="Settings" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Menu_Background" parent="." instance=ExtResource( 1 )]
+position = Vector2( 7, -8 )
+
+[node name="BackButton" parent="." instance=ExtResource( 2 )]
+
+[node name="CheckButton" type="CheckButton" parent="."]
+margin_left = 30.0
+margin_top = 6.0
+margin_right = 205.0
+margin_bottom = 46.0
+text = "Invert Controls"
+script = ExtResource( 3 )
+settingName = "invert-controls"

@@ -18,6 +18,9 @@ var stuck : bool
 func _enter_tree() -> void:
 	Globals.player = self
 
+func _ready() -> void:
+	invertDirections = SettingsManager.settings.get("invert-controls", false)
+
 func _process(delta: float) -> void:
 	$Visual.animate(inst2dict(self))
 
@@ -31,10 +34,15 @@ func _physics_process(delta: float) -> void:
 	
 	pollInput()
 #	applied_force = Vector2.ZERO
-	apply_impulse((rDir).rotated(rotation)* inputR, -transform.y * thrusterForce * inputR * delta)
-	apply_impulse((lDir).rotated(rotation)* inputL, -transform.y * thrusterForce * inputL * delta)
+	apply_impulse((rDir).rotated(rotation)* inputL, -transform.y * thrusterForce * inputL * delta)
+	apply_impulse((lDir).rotated(rotation)* inputR, -transform.y * thrusterForce * inputR * delta)
 	
-	if linear_velocity.y > -8 and linear_velocity.y < 0.5 and abs(fmod(rotation_degrees, 360)) > 45:
+	if (
+		linear_velocity.y > -8 
+		and linear_velocity.y < 0.5 
+		and abs(fmod(rotation_degrees, 360)) > 45
+		and get_colliding_bodies().size() > 0
+	):
 		if !stuck: emit_signal("stuck", true)
 		stuck = true
 	else: 
@@ -60,7 +68,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		else: action("right", event.is_pressed())
 	else:
 		if event.is_action_pressed("restart"):
-			get_tree().reload_current_scene()
+			TransitionManager.reloadScene()
 
 func action(name: String, trigger: bool) -> void:
 	if trigger: Input.action_press(name); else: Input.action_release(name)

@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://Checkpoint.gd" type="Script" id=1]
+[ext_resource path="res://Mechanics/Checkpoint.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/player_main.png" type="Texture" id=2]
 [ext_resource path="res://Sprites/light_checkpoint.png" type="Texture" id=4]
 

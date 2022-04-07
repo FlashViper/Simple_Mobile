@@ -8,4 +8,4 @@ func onPlayerStuck(isStuck: bool) -> void:
 	$AnimationPlayer.play("Appear" if isStuck else "Disappear")
 
 func onReset() -> void:
-	get_tree().reload_current_scene()
+	TransitionManager.reloadScene()

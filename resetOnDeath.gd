@@ -6,3 +6,5 @@ func _ready():
 func onBodyEntered(body: Node) -> void:
 	if !body.is_in_group("player"): return
 	get_tree().reload_current_scene()
+#	TransitionManager.reloadScene()
+#	yield(TransitionManager, "finishedTransition")

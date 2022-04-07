@@ -9,6 +9,8 @@ extents = Vector2( 17.5, 13 )
 [node name="Player" type="RigidBody2D" groups=["player"]]
 position = Vector2( 117, 156 )
 continuous_cd = 2
+contacts_reported = 3
+contact_monitor = true
 can_sleep = false
 angular_damp = 10.0
 script = ExtResource( 1 )

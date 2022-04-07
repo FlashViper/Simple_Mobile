@@ -4,7 +4,7 @@
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Player/CameraRig.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Levels/LevelBounds.gd" type="Script" id=4]
-[ext_resource path="res://Checkpoint.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Mechanics/Checkpoint.tscn" type="PackedScene" id=5]
 [ext_resource path="res://GUI/GUI_Main.tscn" type="PackedScene" id=6]
 
 [sub_resource type="CanvasItemMaterial" id=1]
@@ -22,6 +22,7 @@ border_width = 3.1
 script = ExtResource( 4 )
 
 [node name="Background" type="TileMap" parent="."]
+visible = false
 self_modulate = Color( 1, 1, 1, 0 )
 material = SubResource( 1 )
 tile_set = ExtResource( 1 )
