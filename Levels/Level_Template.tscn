@@ -18,7 +18,8 @@ margin_top = -557.0
 margin_right = 406.0
 margin_bottom = 214.0
 mouse_filter = 2
-border_width = 3.1
+border_color = Color( 1, 1, 1, 1 )
+border_width = 5.0
 script = ExtResource( 4 )
 
 [node name="Background" type="TileMap" parent="."]

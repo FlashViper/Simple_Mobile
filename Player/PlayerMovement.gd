@@ -24,6 +24,9 @@ func _enter_tree() -> void:
 	Globals.player = self
 
 func _ready() -> void:
+	var test := Physics2DTestMotionResult.new()
+	if test_motion(Vector2.DOWN * 35, true, 0.08, test):
+		position += test.motion
 	invertDirections = SettingsManager.settings.get("invert-controls", false)
 
 func _process(delta: float) -> void:

@@ -21,7 +21,7 @@ func _process(delta: float) -> void:
 	
 	if opened and !triggered:
 		var player := Globals.player # for readability
-		var flags : int
+		var flags := 0
 		flags += int(abs(player.global_position.x - $TargetPos.global_position.x) > xRange)
 		flags += int(player.transform.y.dot(transform.y) < 0.8) * 2
 		flags += int(player.linear_velocity.length_squared() > 10) * 4

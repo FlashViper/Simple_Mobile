@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://icon.png" type="Texture" id=1]
 [ext_resource path="res://Mechanics/Door.gd" type="Script" id=2]
@@ -62,17 +62,14 @@ tracks/1/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 0, 50 ) ]
 }
 
-[sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 60.5, 104.5 )
-
-[node name="Door" type="Node2D"]
+[node name="Door" type="Node2D" groups=["door"]]
 script = ExtResource( 2 )
 
 [node name="Bottom" type="StaticBody2D" parent="."]
 
 [node name="Sprite" type="Sprite" parent="Bottom"]
-position = Vector2( -5.96046e-08, -12 )
-scale = Vector2( 0.40625, 1 )
+position = Vector2( -5.96046e-08, -10 )
+scale = Vector2( 0.40625, 1.0625 )
 texture = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bottom"]
@@ -83,8 +80,8 @@ shape = SubResource( 1 )
 position = Vector2( 0, -63 )
 
 [node name="Sprite" type="Sprite" parent="Top"]
-position = Vector2( -5.96046e-08, -12 )
-scale = Vector2( 0.40625, 1 )
+position = Vector2( -5.96046e-08, -14 )
+scale = Vector2( 0.40625, 1.0625 )
 texture = ExtResource( 1 )
 flip_v = true
 
@@ -96,8 +93,9 @@ shape = SubResource( 1 )
 anims/RESET = SubResource( 3 )
 anims/open = SubResource( 2 )
 
-[node name="ZoneTrigger" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ZoneTrigger"]
-position = Vector2( 0.5, -45.5 )
-shape = SubResource( 4 )
+[node name="TriggerZone" type="ReferenceRect" parent="."]
+margin_left = -137.0
+margin_top = -132.0
+margin_right = 135.0
+margin_bottom = 37.0
+mouse_filter = 2

@@ -7,4 +7,4 @@ func _ready():
 	connect("pressed", self, "onPressed")
 
 func onPressed() -> void:
-	SettingsManager.settings[settingName] = pressed
+	SettingsManager.setSetting(settingName, pressed)
