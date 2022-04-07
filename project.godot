@@ -24,7 +24,7 @@ config/name="Simple_Mobile"
 run/main_scene="res://GUI/TitleScreen.tscn"
 boot_splash/image="res://Sprites/splash_screen.png"
 boot_splash/bg_color=Color( 0.427451, 0, 0.219608, 1 )
-config/icon="res://icon.png"
+config/icon="res://Sprites/icon_android_main.png"
 
 [autoload]
 
