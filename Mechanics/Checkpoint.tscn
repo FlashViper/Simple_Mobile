@@ -102,6 +102,7 @@ extents = Vector2( 122.5, 50.5 )
 [node name="Checkpoint" type="Area2D"]
 position = Vector2( 496, 93 )
 script = ExtResource( 1 )
+xRange = 8.0
 
 [node name="Visual" type="Node2D" parent="."]
 

@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://Water.gd" type="Script" id=1]
-[ext_resource path="res://resetOnDeath.gd" type="Script" id=2]
-[ext_resource path="res://Sprites/water.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/water.png" type="Texture" id=1]
+[ext_resource path="res://Mechanics/Water.gd" type="Script" id=2]
+[ext_resource path="res://resetOnDeath.gd" type="Script" id=3]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -23,15 +23,15 @@ margin_left = -32.0
 margin_top = -32.0
 margin_right = 32.0
 margin_bottom = 32.0
-texture = ExtResource( 3 )
+texture = ExtResource( 1 )
 region_rect = Rect2( 0, 0, 32, 32 )
 patch_margin_top = 15
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
-script = ExtResource( 1 )
+script = ExtResource( 2 )
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="trigger" type="Area2D" parent="."]
-script = ExtResource( 2 )
+script = ExtResource( 3 )

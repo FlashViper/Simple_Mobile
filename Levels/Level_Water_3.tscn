@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Levels/Level_Template.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Water.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Mechanics/Water.tscn" type="PackedScene" id=2]
 
 [node name="Main" instance=ExtResource( 1 )]
 position = Vector2( -4, 17 )

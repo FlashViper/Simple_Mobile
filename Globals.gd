@@ -26,11 +26,17 @@ func _enter_tree() -> void:
 #	levels = data.split("\n", false)
 	levels = Utility.loadFileLines("res://Levels/LevelOrder.txt")
 
+var fallback := "res://GUI/TitleScreen.tscn"
 func nextLevel() -> void:
-	levelIndex = min(levelIndex + 1, levels.size() - 1)
+	levelIndex += 1
+	state = STATE_TRANSITION
+	if levelIndex > levels.size() - 1:
+		TransitionManager.switchScene(fallback)
+		return
 #	get_tree().change_scene("res://Levels/%s.tscn" % levels[levelIndex])
 	TransitionManager.switchScene("res://Levels/%s.tscn" % levels[levelIndex])
 	yield(TransitionManager, "finishedTransition")
+	state = STATE_NORMAL
 
 func _notification(what: int) -> void:
 	match what:
