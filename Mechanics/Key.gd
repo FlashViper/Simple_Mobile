@@ -1,6 +1,8 @@
 extends Area2D
 
-signal onCollected()
+signal pickedUp()
+signal lost()
+signal collected()
 
 export var disableOnGround := true
 var following : bool
@@ -17,6 +19,7 @@ func _ready():
 func onEnter(body: PhysicsBody2D) -> void:
 	if !body or following or collected or !body.is_in_group("player"): return
 	following = true
+	emit_signal("pickedUp")
 
 func _process(delta: float) -> void:
 	if collected: return
@@ -32,6 +35,7 @@ func _process(delta: float) -> void:
 		
 		if disableOnGround && Globals.player.onGround:
 			following = false
+			emit_signal("lost")
 	global_position = lerp(global_position, pos , 0.1)
 
 func collect(obj: Node):
@@ -47,5 +51,5 @@ func collect(obj: Node):
 	print(t)
 	
 	obj.get_parent().activate()
-	emit_signal("onCollected")
+	emit_signal("collected")
 	queue_free()

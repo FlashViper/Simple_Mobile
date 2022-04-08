@@ -24,7 +24,11 @@ var levels := PoolStringArray()
 
 func _enter_tree() -> void:
 #	levels = data.split("\n", false)
-	levels = Utility.loadFileLines("res://Levels/LevelOrder.txt")
+	var levelsRaw := Utility.loadFileLines("res://Levels/LevelOrder.txt")
+	for l in levelsRaw:
+		if l[0] != "#":
+			levels.append(l)
+	
 
 var fallback := "res://GUI/TitleScreen.tscn"
 func nextLevel() -> void:

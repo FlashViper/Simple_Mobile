@@ -9,7 +9,9 @@ radius = 18.0
 [node name="Key" type="Area2D"]
 script = ExtResource( 2 )
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="Visual" type="Node2D" parent="."]
+
+[node name="Sprite" type="Sprite" parent="Visual"]
 position = Vector2( -1.90735e-06, 1 )
 texture = ExtResource( 1 )
 hframes = 8
