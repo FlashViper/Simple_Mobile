@@ -23,7 +23,7 @@ func _process(delta: float) -> void:
 		var player := Globals.player # for readability
 		var flags := 0
 		flags += int(abs(player.global_position.x - $TargetPos.global_position.x) > xRange)
-		flags += int(player.transform.y.dot(transform.y) < 0.8) * 2
+		flags += int(abs(player.transform.y.dot(transform.y)) < 0.8) * 2
 		flags += int(player.linear_velocity.length_squared() > 10) * 4
 		flags += int(player.angular_velocity > 1) * 16
 		flags += int(!player.onGround)

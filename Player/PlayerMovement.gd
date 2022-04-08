@@ -30,15 +30,15 @@ func _ready() -> void:
 	invertDirections = SettingsManager.settings.get("invert-controls", false)
 
 func _process(delta: float) -> void:
-	$Visual.animate(inst2dict(self))
+	$Visual.animate(self)
 
 #todo: analize for frame-dependance
 func _physics_process(delta: float) -> void:
-	if Globals.state == Globals.STATE_TRANSITION:
-		mode = MODE_STATIC
-		return
-	else:
-		mode = MODE_RIGID
+#	if Globals.state == Globals.STATE_TRANSITION:
+#		mode = MODE_STATIC
+#		return
+#	else:
+#		mode = MODE_RIGID
 	
 	pollInput()
 	onGround = get_colliding_bodies().size() > 0
