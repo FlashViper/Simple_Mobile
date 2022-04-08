@@ -1,8 +1,10 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Restart.gd" type="Script" id=1]
 [ext_resource path="res://GUI/BackButton.tscn" type="PackedScene" id=2]
 [ext_resource path="res://GUI/TopMenu.gd" type="Script" id=3]
+[ext_resource path="res://GUI/Fonts/font_label.tres" type="DynamicFont" id=4]
+[ext_resource path="res://GUI/SpeedrunTimer.gd" type="Script" id=5]
 
 [sub_resource type="StyleBoxEmpty" id=68]
 
@@ -115,3 +117,21 @@ anims/Appear = SubResource( 64 )
 anims/Disappear = SubResource( 66 )
 anims/Hidden = SubResource( 67 )
 anims/RESET = SubResource( 65 )
+
+[node name="SpeedrunTimer" type="Control" parent="."]
+visible = false
+margin_left = 36.0
+margin_top = -4.0
+margin_right = 189.0
+margin_bottom = 36.0
+script = ExtResource( 5 )
+
+[node name="Label" type="Label" parent="SpeedrunTimer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 10.0
+margin_bottom = 10.0
+custom_fonts/font = ExtResource( 4 )
+text = "00:00::00"
+align = 1
+valign = 1

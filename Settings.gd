@@ -5,7 +5,9 @@ const filepath := "user://settings.json"
 var settings := {
 	"invert-controls": true,
 	"torque-correction": true,
-	"lower-falling-gravity": true
+	"lower-falling-gravity": true,
+	"speedrun-record": 9999999.0,
+	"speedrun-timer-enabled": false
 }
 
 func _enter_tree() -> void:
@@ -31,7 +33,9 @@ func loadSettings() -> void:
 	var txt := Utility.loadFileText(filepath)
 	if !txt: return
 #	print("txt: " + txt)
-	settings = parse_json(txt)
+	var s := parse_json(txt) as Dictionary
+	for i in s:
+		settings[i] = s[i]
 
 func setSetting(name:String, value) -> void:
 	settings[name] = value

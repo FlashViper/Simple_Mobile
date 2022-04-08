@@ -26,28 +26,38 @@ text = "Invert Controls"
 script = ExtResource( 3 )
 settingName = "invert-controls"
 
+[node name="CheckButton2" type="CheckButton" parent="."]
+margin_left = 25.0
+margin_top = 46.0
+margin_right = 206.0
+margin_bottom = 86.0
+disabled = true
+text = "Speedrun Timer"
+script = ExtResource( 3 )
+settingName = "speedrun-timer-enabled"
+
 [node name="Label" type="Label" parent="."]
-margin_left = 20.0
-margin_top = 70.0
-margin_right = 201.0
-margin_bottom = 108.0
+margin_left = 18.0
+margin_top = 121.0
+margin_right = 199.0
+margin_bottom = 159.0
 custom_fonts/font = ExtResource( 4 )
 text = "Experimental"
 
 [node name="torque" type="CheckButton" parent="."]
-margin_left = 19.0
-margin_top = 106.0
-margin_right = 210.0
-margin_bottom = 146.0
+margin_left = 17.0
+margin_top = 157.0
+margin_right = 208.0
+margin_bottom = 197.0
 text = "torque correction"
 script = ExtResource( 3 )
 settingName = "torque-correction"
 
 [node name="torque2" type="CheckButton" parent="."]
-margin_left = 9.0
-margin_top = 146.0
-margin_right = 225.0
-margin_bottom = 186.0
+margin_left = 7.0
+margin_top = 197.0
+margin_right = 223.0
+margin_bottom = 237.0
 text = "lower falling gramvity"
 script = ExtResource( 3 )
 settingName = "lower-falling-gravity"
