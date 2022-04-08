@@ -1,7 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://icon.png" type="Texture" id=1]
 [ext_resource path="res://Mechanics/Door.gd" type="Script" id=2]
+[ext_resource path="res://Sprites/robot_drone.png" type="Texture" id=3]
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 3 )
+region = Rect2( 224, 32, 32, 64 )
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 10, 30 )
@@ -32,6 +36,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [ Vector2( 0, 0 ) ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("Lock:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
 
 [sub_resource type="Animation" id=2]
 resource_name = "open"
@@ -61,6 +77,22 @@ tracks/1/keys = {
 "update": 0,
 "values": [ Vector2( 0, 0 ), Vector2( 0, 50 ) ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("Lock:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.3, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.1, 1.1 ), Vector2( 1e-05, 1e-05 ) ]
+}
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 3 )
+region = Rect2( 224, 0, 32, 32 )
 
 [node name="Door" type="Node2D" groups=["door"]]
 script = ExtResource( 2 )
@@ -69,8 +101,7 @@ script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="Bottom"]
 position = Vector2( -5.96046e-08, -10 )
-scale = Vector2( 0.40625, 1.0625 )
-texture = ExtResource( 1 )
+texture = SubResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bottom"]
 position = Vector2( 0, -11 )
@@ -81,8 +112,7 @@ position = Vector2( 0, -63 )
 
 [node name="Sprite" type="Sprite" parent="Top"]
 position = Vector2( -5.96046e-08, -14 )
-scale = Vector2( 0.40625, 1.0625 )
-texture = ExtResource( 1 )
+texture = SubResource( 4 )
 flip_v = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Top"]
@@ -99,3 +129,7 @@ margin_top = -132.0
 margin_right = 135.0
 margin_bottom = 37.0
 mouse_filter = 2
+
+[node name="Lock" type="Sprite" parent="."]
+position = Vector2( 0, -44 )
+texture = SubResource( 5 )

@@ -40,7 +40,7 @@ func collect(obj: Node):
 	add_child(t)
 	
 	t.interpolate_property(self, "global_position", 
-		global_position, obj.get_parent().global_position, 0.5,
+		global_position, obj.get_node("../Lock").global_position, 0.5,
 		Tween.TRANS_QUART, Tween.EASE_IN_OUT)
 	t.start()
 	yield(t, "tween_all_completed")

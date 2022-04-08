@@ -1,19 +1,20 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://icon.png" type="Texture" id=1]
+[ext_resource path="res://Sprites/robot_drone.png" type="Texture" id=1]
 [ext_resource path="res://Mechanics/Key.gd" type="Script" id=2]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 18.0278
+radius = 18.0
 
 [node name="Key" type="Area2D"]
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
-modulate = Color( 0.992157, 1, 0, 1 )
 position = Vector2( -1.90735e-06, 1 )
-scale = Vector2( 0.3, 0.3 )
 texture = ExtResource( 1 )
+hframes = 8
+vframes = 8
+frame = 58
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
