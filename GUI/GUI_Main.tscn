@@ -102,9 +102,9 @@ script = ExtResource( 1 )
 [node name="RestartButton" type="Button" parent="Restart"]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -71.5
+margin_left = 41.0
 margin_top = 8.0
-margin_right = 70.5
+margin_right = 183.0
 margin_bottom = 46.0
 text = "Restart?"
 
