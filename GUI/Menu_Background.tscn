@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://icon.png" type="Texture" id=1]
-[ext_resource path="res://Sprites/player_main.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/robot_drone.png" type="Texture" id=2]
 
 [node name="Menu_Background" type="Node2D"]
 

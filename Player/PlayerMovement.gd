@@ -17,8 +17,10 @@ var inputR : float
 var inputL : float
 var invertDirections := false
 
+var onWall : bool
 var onGround : bool
 var stuck : bool
+
 
 func _enter_tree() -> void:
 	Globals.player = self
@@ -41,7 +43,11 @@ func _physics_process(delta: float) -> void:
 #		mode = MODE_RIGID
 	
 	pollInput()
-	onGround = get_colliding_bodies().size() > 0
+	onWall = get_colliding_bodies().size() > 0
+	onGround = (onWall and 
+		abs(transform.y.dot(Vector2.UP)) > 0.9 and
+		$GroundedDetector.get_overlapping_bodies().size() > 1)# and
+#		!$GroundedDetector.get_overlapping_bodies().has(self))
 #	applied_force = Vector2.ZERO
 	apply_impulse((rDir).rotated(rotation)* inputL, -transform.y * thrusterForce * inputL * delta)
 	apply_impulse((lDir).rotated(rotation)* inputR, -transform.y * thrusterForce * inputR * delta)
@@ -58,7 +64,7 @@ func _physics_process(delta: float) -> void:
 		linear_velocity.y > -8 
 		and linear_velocity.y < 0.5 
 		and abs(fmod(rotation_degrees, 360)) > 45
-		and onGround
+		and onWall
 	):
 		if !stuck: emit_signal("stuck", true)
 		stuck = true

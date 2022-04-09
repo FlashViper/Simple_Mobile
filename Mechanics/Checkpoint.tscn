@@ -1,41 +1,55 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Mechanics/Checkpoint.gd" type="Script" id=1]
-[ext_resource path="res://Sprites/player_main.png" type="Texture" id=2]
 [ext_resource path="res://Sprites/light_checkpoint.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/mechanics.png" type="Texture" id=5]
+
+[sub_resource type="RectangleShape2D" id=57]
+extents = Vector2( 122.5, 50.5 )
 
 [sub_resource type="AtlasTexture" id=58]
-atlas = ExtResource( 2 )
+atlas = ExtResource( 5 )
 region = Rect2( 2, 246, 54, 9 )
 
 [sub_resource type="AtlasTexture" id=59]
-atlas = ExtResource( 2 )
+atlas = ExtResource( 5 )
 region = Rect2( 6, 232, 22, 12 )
+
+[sub_resource type="AtlasTexture" id=63]
+atlas = ExtResource( 5 )
+region = Rect2( 224, 96, 32, 32 )
+
+[sub_resource type="Curve" id=64]
+_data = [ Vector2( 0, 0 ), 0.0, 8.36364, 0, 1, Vector2( 0.119565, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.826087, 1 ), -0.0546051, -0.0546051, 0, 0, Vector2( 1, 0.525898 ), -2.72609, 0.0, 1, 0 ]
+
+[sub_resource type="Gradient" id=65]
+offsets = PoolRealArray( 0, 0.801242, 0.925466 )
+colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 )
 
 [sub_resource type="Animation" id=62]
 resource_name = "Close"
 length = 0.2
 tracks/0/type = "value"
-tracks/0/path = NodePath("Side_Left:position")
+tracks/0/path = NodePath("Base/Side_Left:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
 "times": PoolRealArray( 0, 0.2 ),
-"transitions": PoolRealArray( 1, 1 ),
+"transitions": PoolRealArray( 0.5, 1 ),
 "update": 0,
 "values": [ Vector2( -23, -5 ), Vector2( -11, -5 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Side_Right:position")
+tracks/1/path = NodePath("Base/Side_Right:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
 "times": PoolRealArray( 0, 0.2 ),
-"transitions": PoolRealArray( 1, 1 ),
+"transitions": PoolRealArray( 0.5, 1 ),
 "update": 0,
 "values": [ Vector2( 23, -5 ), Vector2( 11, -5 ) ]
 }
@@ -45,7 +59,7 @@ resource_name = "Open"
 length = 0.25
 step = 0.01
 tracks/0/type = "value"
-tracks/0/path = NodePath("Side_Left:position")
+tracks/0/path = NodePath("Base/Side_Left:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -57,7 +71,7 @@ tracks/0/keys = {
 "values": [ Vector2( -11, -5 ), Vector2( -23, -5 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Side_Right:position")
+tracks/1/path = NodePath("Base/Side_Right:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -72,7 +86,7 @@ tracks/1/keys = {
 [sub_resource type="Animation" id=61]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("Side_Left:position")
+tracks/0/path = NodePath("Base/Side_Left:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -84,7 +98,7 @@ tracks/0/keys = {
 "values": [ Vector2( -11, -5 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Side_Right:position")
+tracks/1/path = NodePath("Base/Side_Right:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -96,29 +110,81 @@ tracks/1/keys = {
 "values": [ Vector2( 11, -5 ) ]
 }
 
-[sub_resource type="RectangleShape2D" id=57]
-extents = Vector2( 122.5, 50.5 )
-
 [node name="Checkpoint" type="Area2D"]
 position = Vector2( 496, 93 )
 script = ExtResource( 1 )
 xRange = 8.0
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -3.5, -31.5 )
+shape = SubResource( 57 )
+
 [node name="Visual" type="Node2D" parent="."]
 
-[node name="Base" type="Sprite" parent="Visual"]
+[node name="Base" type="Node2D" parent="Visual"]
+
+[node name="Base" type="Sprite" parent="Visual/Base"]
 texture = SubResource( 58 )
 
-[node name="Side_Left" type="Sprite" parent="Visual"]
+[node name="Side_Left" type="Sprite" parent="Visual/Base"]
 position = Vector2( -11, -5 )
 z_index = 1
 texture = SubResource( 59 )
 
-[node name="Side_Right" type="Sprite" parent="Visual"]
+[node name="Side_Right" type="Sprite" parent="Visual/Base"]
 position = Vector2( 11, -5 )
 z_index = 1
 texture = SubResource( 59 )
 flip_h = true
+
+[node name="Particles" type="Node2D" parent="Visual"]
+
+[node name="silver" type="CPUParticles2D" parent="Visual/Particles"]
+position = Vector2( 0, -18 )
+emitting = false
+one_shot = true
+explosiveness = 0.83
+lifetime_randomness = 0.33
+texture = SubResource( 63 )
+emission_shape = 1
+emission_sphere_radius = 16.51
+direction = Vector2( 0, -1 )
+initial_velocity = 121.21
+initial_velocity_random = 0.62
+angular_velocity = 43.64
+angular_velocity_random = 1.0
+angle = 360.0
+angle_random = 1.0
+scale_amount = 0.5
+scale_amount_random = 0.41
+scale_amount_curve = SubResource( 64 )
+color = Color( 0.584314, 0.584314, 0.584314, 1 )
+color_ramp = SubResource( 65 )
+hue_variation = -0.1
+hue_variation_random = 0.5
+
+[node name="gold" type="CPUParticles2D" parent="Visual/Particles"]
+position = Vector2( 0, -18 )
+emitting = false
+explosiveness = 0.83
+lifetime_randomness = 0.33
+texture = SubResource( 63 )
+emission_shape = 1
+emission_sphere_radius = 16.51
+direction = Vector2( 0, -1 )
+initial_velocity = 121.21
+initial_velocity_random = 0.62
+angular_velocity = 43.64
+angular_velocity_random = 1.0
+angle = 360.0
+angle_random = 1.0
+scale_amount = 0.5
+scale_amount_random = 0.41
+scale_amount_curve = SubResource( 64 )
+color = Color( 0.968627, 1, 0.403922, 1 )
+color_ramp = SubResource( 65 )
+hue_variation = 0.2
+hue_variation_random = 0.35
 
 [node name="Light2D" type="Light2D" parent="Visual"]
 texture = ExtResource( 4 )
@@ -131,19 +197,8 @@ anims/Close = SubResource( 62 )
 anims/Open = SubResource( 60 )
 anims/RESET = SubResource( 61 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -3.5, -31.5 )
-shape = SubResource( 57 )
-
 [node name="TargetPos" type="Position2D" parent="."]
 position = Vector2( 0, 2 )
 
 [node name="PuppetPos" type="Position2D" parent="."]
 position = Vector2( 0, -21 )
-
-[node name="Sprite" type="Sprite" parent="PuppetPos"]
-visible = false
-position = Vector2( 0, -9 )
-texture = ExtResource( 2 )
-hframes = 4
-vframes = 4

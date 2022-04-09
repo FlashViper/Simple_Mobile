@@ -8,6 +8,11 @@
 code = "shader_type canvas_item;
 
 uniform float scrollSpeed = 0.5;
+uniform float waveSpeed = 3;
+
+void vertex(){
+	VERTEX.y += sin(TIME * waveSpeed) * (1.0 - UV.y);
+}
 
 void fragment(){
 	COLOR = texture(TEXTURE, UV + vec2((TIME * scrollSpeed), 0));
@@ -16,6 +21,7 @@ void fragment(){
 [sub_resource type="ShaderMaterial" id=2]
 shader = SubResource( 1 )
 shader_param/scrollSpeed = 0.5
+shader_param/waveSpeed = 3.0
 
 [node name="water" type="NinePatchRect"]
 material = SubResource( 2 )

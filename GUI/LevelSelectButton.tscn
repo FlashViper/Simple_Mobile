@@ -1,6 +1,11 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://GUI/Fonts/font_button.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Sprites/robot_drone.png" type="Texture" id=2]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 2 )
+region = Rect2( 224, 96, 32, 32 )
 
 [node name="Button" type="Button"]
 margin_right = 45.0
@@ -8,3 +13,13 @@ margin_bottom = 45.0
 rect_min_size = Vector2( 45, 45 )
 custom_fonts/font = ExtResource( 1 )
 text = "1"
+
+[node name="Indicator" type="TextureRect" parent="."]
+visible = false
+margin_left = 28.0
+margin_top = -7.0
+margin_right = 53.0
+margin_bottom = 18.0
+texture = SubResource( 1 )
+expand = true
+stretch_mode = 5

@@ -3,5 +3,5 @@
 [ext_resource path="res://GUI/Font_Styles/Optima-Bold-02.ttf" type="DynamicFontData" id=1]
 
 [resource]
-size = 31
+size = 24
 font_data = ExtResource( 1 )

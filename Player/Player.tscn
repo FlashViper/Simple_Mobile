@@ -1,13 +1,17 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Player/PlayerMovement.gd" type="Script" id=1]
 [ext_resource path="res://Player/Player_Visual.tscn" type="PackedScene" id=2]
 
 [sub_resource type="PhysicsMaterial" id=2]
 friction = 0.7
+bounce = 0.08
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 17.5, 13 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 16, 2 )
 
 [node name="Player" type="RigidBody2D" groups=["player"]]
 position = Vector2( 117, 156 )
@@ -25,3 +29,9 @@ thrusterForce = 500
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 8 )
 shape = SubResource( 1 )
+
+[node name="GroundedDetector" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GroundedDetector"]
+position = Vector2( 0, 21 )
+shape = SubResource( 3 )

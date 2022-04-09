@@ -1,0 +1,47 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://GUI/theme_main.tres" type="Theme" id=1]
+[ext_resource path="res://GUI/Menu_Background.tscn" type="PackedScene" id=2]
+[ext_resource path="res://TitleScreen.gd" type="Script" id=3]
+
+[node name="Beat the game" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 1 )
+script = ExtResource( 3 )
+
+[node name="Menu_Background" parent="." instance=ExtResource( 2 )]
+position = Vector2( 4, -53 )
+
+[node name="PlayerMain" parent="Menu_Background" index="1"]
+position = Vector2( 107, 374 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = 4.0
+margin_top = 12.0
+margin_right = 223.0
+margin_bottom = 174.0
+text = "Yay!
+You beat the game!
+(in fact, I would say that you DESTROYED it)"
+align = 1
+autowrap = true
+
+[node name="Button" type="Button" parent="."]
+margin_left = 41.0
+margin_top = 199.0
+margin_right = 183.0
+margin_bottom = 243.0
+text = "Back to level 1"
+
+[node name="Button2" type="Button" parent="."]
+margin_left = 41.0
+margin_top = 255.0
+margin_right = 183.0
+margin_bottom = 299.0
+text = "Title Screen"
+
+[connection signal="pressed" from="Button" to="." method="switchLevel" binds= [ 0 ]]
+[connection signal="pressed" from="Button2" to="." method="switchScene" binds= [ "GUI/TitleScreen" ]]
+
+[editable path="Menu_Background"]

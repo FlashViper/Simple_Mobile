@@ -9,6 +9,7 @@ var following : bool
 onready var root := position
 var doors : Array
 var collected : bool
+var tResetTimer : float
 
 func _ready():
 	connect("body_entered", self, "onEnter")
@@ -19,6 +20,7 @@ func _ready():
 func onEnter(body: PhysicsBody2D) -> void:
 	if !body or following or collected or !body.is_in_group("player"): return
 	following = true
+	tResetTimer = 0
 	emit_signal("pickedUp")
 
 func _process(delta: float) -> void:
@@ -33,7 +35,12 @@ func _process(delta: float) -> void:
 				collect(d)
 				return
 		
-		if disableOnGround && Globals.player.onGround:
+		if disableOnGround && Globals.player.onWall:
+			tResetTimer += delta
+		else:
+			tResetTimer = max(tResetTimer - delta * 0.5, 0)
+
+		if tResetTimer > 0.15:
 			following = false
 			emit_signal("lost")
 	global_position = lerp(global_position, pos , 0.1)
@@ -48,7 +55,7 @@ func collect(obj: Node):
 		Tween.TRANS_QUART, Tween.EASE_IN_OUT)
 	t.start()
 	yield(t, "tween_all_completed")
-	print(t)
+#	print(t)
 	
 	obj.get_parent().activate()
 	emit_signal("collected")

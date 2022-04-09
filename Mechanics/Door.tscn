@@ -1,10 +1,10 @@
 [gd_scene load_steps=8 format=2]
 
+[ext_resource path="res://Sprites/mechanics.png" type="Texture" id=1]
 [ext_resource path="res://Mechanics/Door.gd" type="Script" id=2]
-[ext_resource path="res://Sprites/robot_drone.png" type="Texture" id=3]
 
 [sub_resource type="AtlasTexture" id=4]
-atlas = ExtResource( 3 )
+atlas = ExtResource( 1 )
 region = Rect2( 224, 32, 32, 64 )
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -91,7 +91,7 @@ tracks/2/keys = {
 }
 
 [sub_resource type="AtlasTexture" id=5]
-atlas = ExtResource( 3 )
+atlas = ExtResource( 1 )
 region = Rect2( 224, 0, 32, 32 )
 
 [node name="Door" type="Node2D" groups=["door"]]

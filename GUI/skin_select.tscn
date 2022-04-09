@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://GUI/BackButton.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Sprites/robot_drone.png" type="Texture" id=2]
+[ext_resource path="res://GUI/SkinSelect.gd" type="Script" id=3]
+
+[node name="SkinSelect" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+
+[node name="GridContainer" type="GridContainer" parent="."]
+margin_left = 6.0
+margin_top = 163.0
+margin_right = 217.0
+margin_bottom = 346.0
+columns = 4
+
+[node name="BackButton" parent="." instance=ExtResource( 1 )]
+margin_left = 5.0
+margin_top = 351.0
+margin_right = 32.0
+margin_bottom = 395.0
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 109, 14 )
+scale = Vector2( 3.21875, 3.21875 )
+texture = ExtResource( 2 )
+hframes = 4
+vframes = 4

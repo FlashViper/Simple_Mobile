@@ -1,14 +1,15 @@
 extends CanvasLayer
 
 signal finishedTransition()
+onready var anim: AnimationPlayer = $AnimationPlayer
 
 func transition(call : FuncRef, args := [], changeState := true) -> void:
 #	if changeState: Globals.state = Globals.STATE_TRANSITION
-	$AnimationPlayer.play("Transition_Appear")
-	yield($AnimationPlayer, "animation_finished")
+	anim.play("Transition_Appear")
+	yield(anim, "animation_finished")
 	call.call_funcv(args)
-	$AnimationPlayer.play("Transition_Disappear")
-	yield($AnimationPlayer, "animation_finished")
+	anim.play("Transition_Disappear")
+	yield(anim, "animation_finished")
 	emit_signal("finishedTransition")
 #	if changeState: Globals.state = Globals.STATE_NORMAL
 

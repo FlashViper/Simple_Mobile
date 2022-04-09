@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://GUI/Menu_Background.tscn" type="PackedScene" id=1]
 [ext_resource path="res://TitleScreen.gd" type="Script" id=2]
 [ext_resource path="res://GUI/Fonts/font_title.tres" type="DynamicFont" id=3]
 [ext_resource path="res://GUI/Font_Styles/Optima-Bold-02.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://GUI/Fonts/font_button.tres" type="DynamicFont" id=5]
+[ext_resource path="res://Sprites/icon_android_main.png" type="Texture" id=6]
 
 [sub_resource type="DynamicFont" id=1]
 size = 33
@@ -34,12 +35,39 @@ scroll_active = false
 
 [node name="Play" type="Button" parent="."]
 modulate = Color( 0.384314, 0.886275, 0.0392157, 1 )
-margin_left = 62.0
-margin_top = 185.0
-margin_right = 156.0
-margin_bottom = 256.0
+margin_left = 102.0
+margin_top = 186.0
+margin_right = 196.0
+margin_bottom = 257.0
 custom_fonts/font = SubResource( 1 )
 text = "PLAY"
+
+[node name="Play2" type="Button" parent="."]
+margin_left = 24.0
+margin_top = 192.0
+margin_right = 91.0
+margin_bottom = 252.0
+custom_fonts/font = SubResource( 1 )
+expand_icon = true
+
+[node name="MarginContainer" type="MarginContainer" parent="Play2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+custom_constants/margin_right = 3
+custom_constants/margin_top = 3
+custom_constants/margin_left = 3
+custom_constants/margin_bottom = 8
+
+[node name="TextureRect" type="TextureRect" parent="Play2/MarginContainer"]
+margin_left = 3.0
+margin_top = 3.0
+margin_right = 64.0
+margin_bottom = 52.0
+mouse_filter = 2
+texture = ExtResource( 6 )
+expand = true
+stretch_mode = 6
 
 [node name="Settings" type="Button" parent="."]
 modulate = Color( 0.380392, 0.415686, 0.443137, 1 )
@@ -68,7 +96,8 @@ margin_bottom = 384.0
 custom_fonts/font = ExtResource( 5 )
 text = "QUIT"
 
-[connection signal="pressed" from="Play" to="." method="switchScene" binds= [ "Levels/Level1" ]]
+[connection signal="pressed" from="Play" to="." method="currentLevel"]
+[connection signal="pressed" from="Play2" to="." method="switchScene" binds= [ "GUI/Skin_Select" ]]
 [connection signal="pressed" from="Settings" to="." method="switchScene" binds= [ "GUI/Settings" ]]
 [connection signal="pressed" from="Levels" to="." method="switchScene" binds= [ "GUI/LevelSelect" ]]
 [connection signal="pressed" from="Quit" to="." method="quit"]

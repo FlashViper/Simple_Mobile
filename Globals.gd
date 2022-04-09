@@ -8,19 +8,7 @@ var playerAnim
 var camera : Camera2D
 
 # todo
-var levelIndex := 0
 var levels := PoolStringArray()
-#var data := """
-#Level1
-#Level2
-#Level3
-#Level4
-#Level_Water_1
-#Level_Water_2
-#Level_Water_3
-#Level_Water_4
-#../Gameplay
-#"""
 
 func _enter_tree() -> void:
 #	levels = data.split("\n", false)
@@ -30,15 +18,17 @@ func _enter_tree() -> void:
 			levels.append(l)
 	
 
-var fallback := "res://GUI/TitleScreen.tscn"
+func getLevelPath(index: int) -> String:
+	if index > levels.size() - 1:
+		return FALLBACK
+	return "res://Levels/%s.tscn" % levels[SaveGame.levelIndex]
+
+const FALLBACK := "res://GUI/you_won.tscn"
 func nextLevel() -> void:
-	levelIndex += 1
+	SaveGame.levelIndex += 1
 	state = STATE_TRANSITION
-	if levelIndex > levels.size() - 1:
-		TransitionManager.switchScene(fallback)
-		return
 #	get_tree().change_scene("res://Levels/%s.tscn" % levels[levelIndex])
-	TransitionManager.switchScene("res://Levels/%s.tscn" % levels[levelIndex])
+	TransitionManager.switchScene(getLevelPath(SaveGame.levelIndex))
 	yield(TransitionManager, "finishedTransition")
 	state = STATE_NORMAL
 

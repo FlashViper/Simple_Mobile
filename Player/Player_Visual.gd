@@ -9,6 +9,9 @@ var squash := 1.0
 
 func _ready() -> void:
 	Globals.playerAnim = self
+	
+	if SaveGame.skin > 0:
+		$Sprite.frame = SaveGame.skin
 
 func _process(delta: float) -> void:
 	squash = clamp(squash, 0, 2)
@@ -17,12 +20,11 @@ func _process(delta: float) -> void:
 func animate(data) -> void:
 	if taken:
 		return
-	rThruster.emitting = data.inputL > 0 if !data.invertDirections else data.inputR > 0
-	lThruster.emitting = data.inputR > 0 if !data.invertDirections else data.inputL > 0
-	print(data)
+	rThruster.emitting = data.inputR > 0
+	lThruster.emitting = data.inputL > 0
 	squash = lerp(
 		1.0,
-		1.1,
+		1.05,
 		inverse_lerp(
 			0,
 			-150,

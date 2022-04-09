@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://Sprites/player_main.png" type="Texture" id=1]
+[ext_resource path="res://Sprites/robot_drone.png" type="Texture" id=1]
 [ext_resource path="res://Player/ThrusterParticles.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Player/Player_Visual.gd" type="Script" id=3]
 

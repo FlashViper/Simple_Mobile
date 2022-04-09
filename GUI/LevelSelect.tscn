@@ -29,3 +29,4 @@ margin_right = 215.0
 margin_bottom = 311.0
 columns = 4
 script = ExtResource( 4 )
+colors = PoolColorArray( 0.662745, 0.662745, 0.662745, 1, 1, 0.960784, 0, 1 )
