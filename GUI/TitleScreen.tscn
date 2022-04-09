@@ -97,7 +97,7 @@ custom_fonts/font = ExtResource( 5 )
 text = "QUIT"
 
 [connection signal="pressed" from="Play" to="." method="currentLevel"]
-[connection signal="pressed" from="Play2" to="." method="switchScene" binds= [ "GUI/Skin_Select" ]]
+[connection signal="pressed" from="Play2" to="." method="switchScene" binds= [ "GUI/skin_select" ]]
 [connection signal="pressed" from="Settings" to="." method="switchScene" binds= [ "GUI/Settings" ]]
 [connection signal="pressed" from="Levels" to="." method="switchScene" binds= [ "GUI/LevelSelect" ]]
 [connection signal="pressed" from="Quit" to="." method="quit"]

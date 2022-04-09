@@ -10,9 +10,9 @@ var levelStates := {}
 func _enter_tree() -> void:
 	loadState()
 
-func isSkinUnlocked(skin:int) -> bool:
+func isSkinUnlocked(newSkin:int) -> bool:
 	if skin == 0: return true
-	return (skinsUnlocked as Array).has(skin)
+	return (skinsUnlocked as Array).has(newSkin)
 
 func _notification(what: int) -> void:
 	match what:
@@ -35,6 +35,17 @@ func jsonConvert() -> String:
 	dict.erase("@path")
 	dict.erase("@subpath")
 	return JSON.print(dict, " ")
+
+func deleteSave() -> void:
+	var d := Directory.new()
+	var err := d.remove(SAVE_PATH)
+	if err != OK:
+		printerr("Error whilst deleting save: ", err)
+	else:
+		levelIndex = 0
+		skin = 0
+		skinsUnlocked = PoolIntArray(range(0,7))
+		levelStates = {}
 
 func loadState() -> void:
 	var stateJSON := Utility.loadFileText(SAVE_PATH)

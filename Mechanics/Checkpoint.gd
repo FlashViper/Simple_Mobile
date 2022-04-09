@@ -79,6 +79,22 @@ func _process(delta: float) -> void:
 				match level:
 					1: $Visual/Particles/silver.emitting = true
 					2: $Visual/Particles/gold.emitting = true
+				var state := 2
+				for i in Globals.levels.size():
+					var s :int= SaveGame.levelStates.get(i, 0)
+					if s < 2:
+						if s < 1:
+							state = 0
+							break
+						else:
+							state = 1
+				match state:
+					1:
+						if !SaveGame.isSkinUnlocked(12):
+							SaveGame.skinsUnlocked.append(12)
+					2:
+						if !SaveGame.isSkinUnlocked(13):
+							SaveGame.skinsUnlocked.append(13)
 			
 			anim.play("Close")
 			Globals.playerAnim.interpolatePosition($PuppetPos.global_position, 0.45)
