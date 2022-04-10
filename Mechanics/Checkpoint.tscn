@@ -4,9 +4,6 @@
 [ext_resource path="res://Sprites/light_checkpoint.png" type="Texture" id=4]
 [ext_resource path="res://Sprites/mechanics.png" type="Texture" id=5]
 
-[sub_resource type="RectangleShape2D" id=57]
-extents = Vector2( 122.5, 50.5 )
-
 [sub_resource type="AtlasTexture" id=58]
 atlas = ExtResource( 5 )
 region = Rect2( 2, 246, 54, 9 )
@@ -110,14 +107,13 @@ tracks/1/keys = {
 "values": [ Vector2( 11, -5 ) ]
 }
 
+[sub_resource type="RectangleShape2D" id=57]
+extents = Vector2( 122.5, 50.5 )
+
 [node name="Checkpoint" type="Area2D"]
 position = Vector2( 496, 93 )
 script = ExtResource( 1 )
 xRange = 8.0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -3.5, -31.5 )
-shape = SubResource( 57 )
 
 [node name="Visual" type="Node2D" parent="."]
 
@@ -196,6 +192,11 @@ range_z_max = 10
 anims/Close = SubResource( 62 )
 anims/Open = SubResource( 60 )
 anims/RESET = SubResource( 61 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -3.5, -31.5 )
+z_index = -2
+shape = SubResource( 57 )
 
 [node name="TargetPos" type="Position2D" parent="."]
 position = Vector2( 0, 2 )

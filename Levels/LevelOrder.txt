@@ -21,5 +21,12 @@ Level_Key_2
 Level_Key_3
 Level_Key_4
 
+[Blocks]
+Level_Blocks_1
+Level_Blocks_2
+Level_Blocks_3
+Level_Blocks_4
+Level_Blocks_5
+
 [Torture]
 Level_Torture_1

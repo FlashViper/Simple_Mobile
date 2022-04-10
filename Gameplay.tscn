@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://tileset_default.tres" type="TileSet" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Player/CameraRig.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Mechanics/Checkpoint.tscn" type="PackedScene" id=4]
 [ext_resource path="res://GUI/GUI_Main.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Levels/LevelBounds.gd" type="Script" id=6]
 
 [sub_resource type="CanvasItemMaterial" id=56]
 blend_mode = 3
@@ -13,9 +14,18 @@ blend_mode = 3
 
 [node name="Gameplay_Test" type="Node2D"]
 
+[node name="ReferenceRect" type="ReferenceRect" parent="."]
+margin_left = -64.0
+margin_top = -56.0
+margin_right = 626.0
+margin_bottom = 462.0
+mouse_filter = 2
+script = ExtResource( 6 )
+
 [node name="Background" type="TileMap" parent="."]
 self_modulate = Color( 1, 1, 1, 0 )
 material = SubResource( 56 )
+z_index = -6
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 32, 32 )
 collision_layer = 0

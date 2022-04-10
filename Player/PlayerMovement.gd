@@ -90,7 +90,7 @@ func pollGrounded() -> void:
 
 func containsWall(bodies: Array) -> bool:
 	for b in bodies:
-		if b.is_in_group("wall"):
+		if b.is_in_group("ground"):
 			return true
 	return false
 

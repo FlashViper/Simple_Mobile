@@ -15,6 +15,7 @@ extents = Vector2( 16, 2 )
 
 [node name="Player" type="RigidBody2D" groups=["player"]]
 position = Vector2( 117, 156 )
+collision_layer = 5
 physics_material_override = SubResource( 2 )
 continuous_cd = 2
 contacts_reported = 3
