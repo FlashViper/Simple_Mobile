@@ -16,6 +16,11 @@ margin_bottom = 95.0
 [node name="Door" parent="Midground" index="0" instance=ExtResource( 3 )]
 position = Vector2( -17, -21 )
 
+[node name="TriggerZone" parent="Midground/Door" index="3"]
+margin_left = -148.0
+margin_top = -70.0
+margin_right = 129.0
+
 [node name="Block_Breakable" parent="Midground" index="1" instance=ExtResource( 2 )]
 position = Vector2( 135, -31 )
 
@@ -33,3 +38,5 @@ position = Vector2( 47, 42 )
 
 [node name="Checkpoint" parent="." index="6"]
 position = Vector2( 226, -4 )
+
+[editable path="Midground/Door"]

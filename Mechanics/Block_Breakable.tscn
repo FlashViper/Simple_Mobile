@@ -121,7 +121,7 @@ contact_monitor = true
 can_sleep = false
 script = ExtResource( 2 )
 maxHealth = 400
-velocityThreshold = 325
+velocityThreshold = 280
 
 [node name="Visual" type="Sprite" parent="."]
 texture = ExtResource( 1 )

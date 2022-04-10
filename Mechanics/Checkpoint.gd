@@ -34,7 +34,7 @@ func _process(delta: float) -> void:
 	if Globals.player.onGround:
 		if !hasTouchedGround and i_hasTouchedGround:
 			hasTouchedGround = true
-			tTimeSinceTouchedGround = 1.25
+			tTimeSinceTouchedGround = 0.65
 	else:
 		i_hasTouchedGround = true
 	
