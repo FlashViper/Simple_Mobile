@@ -43,10 +43,8 @@ func _physics_process(delta: float) -> void:
 #		mode = MODE_RIGID
 	
 	pollInput()
-	onWall = get_colliding_bodies().size() > 0
-	onGround = (onWall and 
-		abs(transform.y.dot(Vector2.UP)) > 0.9 and
-		$GroundedDetector.get_overlapping_bodies().size() > 1)# and
+	pollGrounded()
+# and
 #		!$GroundedDetector.get_overlapping_bodies().has(self))
 #	applied_force = Vector2.ZERO
 	apply_impulse((rDir).rotated(rotation)* inputL, -transform.y * thrusterForce * inputL * delta)
@@ -79,6 +77,22 @@ func pollInput() -> void:
 	if invertDirections:
 		var a := inputR
 		inputR = inputL; inputL = a
+
+func pollGrounded() -> void:
+	onWall = containsWall(get_colliding_bodies())
+	onGround = false
+
+	if onWall:
+		onGround = (
+			abs(transform.y.dot(Vector2.UP)) > 0.9 
+			and containsWall($GroundedDetector.get_overlapping_bodies())
+		)
+
+func containsWall(bodies: Array) -> bool:
+	for b in bodies:
+		if b.is_in_group("wall"):
+			return true
+	return false
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventScreenTouch:

@@ -1,18 +1,25 @@
+[Introduction]
 Level1
 Level2
-#Level_Movement_1
+# Level_Movement_1
 Level_Movement_2
 Level3
 Level_Movement_3
 Level4
+
+[Water]
 Level_Water_1
 Level_Water_2
 Level_Water_5
 Level_Water_6
 Level_Water_3
 Level_Water_4
+
+[Key]
 Level_Key_1
 Level_Key_2
 Level_Key_3
 Level_Key_4
+
+[Torture]
 Level_Torture_1

@@ -97,7 +97,7 @@ region = Rect2( 224, 0, 32, 32 )
 [node name="Door" type="Node2D" groups=["door"]]
 script = ExtResource( 2 )
 
-[node name="Bottom" type="StaticBody2D" parent="."]
+[node name="Bottom" type="StaticBody2D" parent="." groups=["ground"]]
 
 [node name="Sprite" type="Sprite" parent="Bottom"]
 position = Vector2( -5.96046e-08, -10 )
@@ -107,7 +107,7 @@ texture = SubResource( 4 )
 position = Vector2( 0, -11 )
 shape = SubResource( 1 )
 
-[node name="Top" type="StaticBody2D" parent="."]
+[node name="Top" type="StaticBody2D" parent="." groups=["ground"]]
 position = Vector2( 0, -63 )
 
 [node name="Sprite" type="Sprite" parent="Top"]

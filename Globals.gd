@@ -13,9 +13,16 @@ var levels := PoolStringArray()
 func _enter_tree() -> void:
 #	levels = data.split("\n", false)
 	var levelsRaw := Utility.loadFileLines("res://Levels/LevelOrder.txt")
+	var directory := ""
 	for l in levelsRaw:
-		if l[0] != "#":
-			levels.append(l)
+		if l[0] == "#":
+			continue
+		elif l[0] == "[":
+			directory = (l as String).trim_prefix("[").trim_suffix("]")
+			if directory != "":
+				directory += "/"
+		else:
+			levels.append(directory + l)
 	
 
 func getLevelPath(index: int) -> String:
